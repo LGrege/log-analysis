@@ -8,7 +8,7 @@ The whole framework consists of an easily extensible and highly efficient pipeli
 improvements and adaptions by third parties if needed. Below each of the components making up the core foundation 
 of the project are described in further detail.
 
-![Alt text](../../documentation/images/overview.png?raw=true "Title")
+![Alt text](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/overview.png?raw=true "Title")
 
 ### 1. Input Parsing
 
