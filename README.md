@@ -29,11 +29,11 @@ of the project are described in further detail.
 
 This repository contains two independent modules listed below:
 
-### [Anomaly Detector](anomalyDetector/README.md)
+### [Anomaly Detector](anomalyDetector)
 
 This model contains the whole implementation of the framework used within the sampleApplication module.
 
 
-### [Sample Application](sampleApplication/README.md)
+### [Sample Application](sampleApplication)
 
 Demo model showing how to use the anomalyDetector framework
