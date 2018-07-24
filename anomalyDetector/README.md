@@ -1,6 +1,6 @@
 # Anomaly Detection Module
 
-This model contains the whole implementation of the framework used within the [sampleApplication](sampleApplication/README.md) module.
+This model contains the whole implementation of the framework used within the [sampleApplication](../sampleApplication) module.
 
 ## Overview
 
