@@ -14,8 +14,7 @@ learning techniques and can automatically cluster and analyse log files at runti
 
 ## Acknowledgements
 
-The whole framework was heavily inspired by the bachelor thesis of Tim Zwietasch on
-[Detecting Anomalies in System Log Files using Machine Learning Techniques](ftp://ftp.informatik.uni-stuttgart.de/pub/library/medoc.ustuttgart_fi/BCLR-0148/BCLR-0148.pdf).
+The whole framework was heavily inspired by the bachelor thesis of Tim Zwietasch on [Detecting Anomalies in System Log Files using Machine Learning Techniques](https://elib.uni-stuttgart.de/handle/11682/3471).
 
 The clustering algorithm implemented within this framework is based on the paper 
 [SOStream: self organizing density-based clustering over data stream](https://dl.acm.org/citation.cfm?id=2358881)
@@ -26,15 +25,15 @@ The whole framework consists of an easily extensible and highly efficient pipeli
 improvements and adaptions by third parties if needed. Below each of the components making up the core foundation 
 of the project are described in further detail.
 
-![Alt text](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/overview.png?raw=true "Title")
+![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/overview.png?raw=true "Title")
 
 This repository contains two independent modules listed below:
 
-### [anomalyDetector](anomalyDetector/README.md)
+### [Anomaly Detector](anomalyDetector/README.md)
 
 This model contains the whole implementation of the framework used within the sampleApplication module.
 
 
-### [sampleApplication](sampleApplication/README.md)
+### [Sample Application](sampleApplication/README.md)
 
 Demo model showing how to use the anomalyDetector framework
