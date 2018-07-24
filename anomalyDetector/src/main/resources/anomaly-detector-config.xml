@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Start Input -->
+    <bean id="numericLogTransformer" class="com.lukasgregori.ml.transformation.impl.TfIdfLogTransformer"/>
+
+    <bean id="slidingWindow" class="com.lukasgregori.ml.transformation.util.TfIdfSlidingWindow"/>
+
+    <bean id="logTransformationContext" class="com.lukasgregori.ml.transformation.impl.LogTransformationContext">
+        <constructor-arg type="com.lukasgregori.ml.transformation.NumericLogTransformer" ref="numericLogTransformer"/>
+        <constructor-arg type="com.lukasgregori.ml.transformation.util.AbstractSlidingWindow" ref="slidingWindow"/>
+    </bean>
+
+    <bean id="logEventMonitor" class="com.lukasgregori.ml.input.util.LogEventMonitor"/>
+
+    <bean id="inputParser" class="com.lukasgregori.ml.input.parser.impl.FileInputParser"/>
+
+    <bean id="inputFacade" class="com.lukasgregori.ml.input.InputFacade"/>
+    <!-- End Input -->
+
+    <!-- Start Clustering -->
+    <bean id="distanceMeasure" class="org.apache.commons.math3.ml.distance.EuclideanDistance"/>
+
+    <bean id="clusterer" class="com.lukasgregori.ml.clustering.impl.sostream.SOStreamClusterer">
+        <constructor-arg type="org.apache.commons.math3.ml.distance.DistanceMeasure" ref="distanceMeasure"/>
+        <constructor-arg type="int" value="2"/>
+        <constructor-arg type="double" value="0.5f"/>
+    </bean>
+
+    <bean id="clusteringContext" class="com.lukasgregori.ml.clustering.impl.ClusteringContext">
+        <constructor-arg type="com.lukasgregori.ml.clustering.OnlineClusterer" ref="clusterer"/>
+    </bean>
+    <!-- End Clustering -->
+
+    <!-- Start Anomaly Detection -->
+    <bean id="anomalyDetector" class="com.lukasgregori.ml.anomaly.detection.impl.PositionBasedAnomalyDetector"/>
+
+    <bean id="anomalyDetectionContext" class="com.lukasgregori.ml.anomaly.detection.impl.AnomalyDetectionContext">
+        <constructor-arg type="com.lukasgregori.ml.anomaly.detection.AnomalyDetector" ref="anomalyDetector"/>
+    </bean>
+    <!-- End Anomaly Detection -->
+
+    <!-- Start Util -->
+    <bean id="applicationContextProvider"
+          class="com.lukasgregori.ml.util.ContextProvider"/>
+    <!-- End Util -->
+
+</beans>
