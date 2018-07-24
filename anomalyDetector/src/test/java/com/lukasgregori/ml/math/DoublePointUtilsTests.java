@@ -29,7 +29,6 @@ import java.util.stream.IntStream;
 /**
  * @author Lukas Gregori
  */
-
 public class DoublePointUtilsTests {
 
     @Test

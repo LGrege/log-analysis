@@ -35,7 +35,6 @@ import java.util.stream.IntStream;
 /**
  * @author Lukas Gregori
  */
-
 public class TfIdfLogTransformerTests {
 
     private static final String NUMB_REP_EMPTY = "Error, numerical representation empty";

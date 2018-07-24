@@ -28,7 +28,6 @@ import java.util.stream.IntStream;
 /**
  * @author Lukas Gregori
  */
-
 public class LoggingAnomalyTests {
 
     private static final int NUMB_ANOMALIES = 10;

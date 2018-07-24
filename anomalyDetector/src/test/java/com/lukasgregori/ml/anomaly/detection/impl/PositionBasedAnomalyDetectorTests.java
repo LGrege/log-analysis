@@ -35,10 +35,7 @@ import java.util.List;
 /**
  * @author Lukas Gregori
  */
-
 public class PositionBasedAnomalyDetectorTests {
-
-    private static final ArrayList<SOCluster<CustomLoggingEvent>> clusters = new ArrayList<>();
 
     private static final PositionBasedAnomalyDetector detector = new PositionBasedAnomalyDetector();
 

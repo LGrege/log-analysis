@@ -33,7 +33,6 @@ import java.util.stream.IntStream;
 /**
  * @author Lukas Gregori
  */
-
 public class SOStreamClustererTests {
 
     private static final String LOG_MESSAGE1 = "AA AA AA AA AA";

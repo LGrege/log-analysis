@@ -29,7 +29,6 @@ import org.junit.Test;
 /**
  * @author Lukas Gregori
  */
-
 public class SOClusterUtilsTests {
 
     private static final String THREAD_NAME = "thread1";
