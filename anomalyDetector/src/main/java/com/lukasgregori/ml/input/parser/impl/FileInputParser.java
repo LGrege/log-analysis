@@ -19,10 +19,12 @@
 package com.lukasgregori.ml.input.parser.impl;
 
 import com.lukasgregori.ml.input.parser.InputParser;
-import com.lukasgregori.ml.input.receivers.SubscriptionBasedPatternReceiver;
-import com.lukasgregori.ml.input.util.CustomLoggingEvent;
 import com.lukasgregori.ml.transformation.impl.LogTransformationContext;
+import com.lukasgregori.ml.input.util.CustomLoggingEvent;
 import com.lukasgregori.ml.util.ContextProvider;
+import org.apache.log4j.receivers.varia.LogFilePatternReceiver;
+import org.apache.log4j.spi.LoggingEvent;
+import org.reactivestreams.Subscriber;
 
 import javax.annotation.Resource;
 
@@ -33,23 +35,38 @@ import javax.annotation.Resource;
  * and the parser awaits further log lines
  *
  * @author Lukas Gregori
- * @see AbstractInputParser
  * @see CustomLoggingEvent
  */
-public class FileInputParser extends AbstractInputParser implements InputParser {
+public class FileInputParser extends LogFilePatternReceiver implements InputParser {
+
+    private static final String TIMESTAMP_FORMAT = ContextProvider.getString("input.timestamp.format");
+
+    private static final String INPUT_FORMAT = ContextProvider.getString("input.logging.format");
 
     private static final String FILE_URL = ContextProvider.getString("input.file.url");
 
     private static final boolean TAILING = ContextProvider.getBoolean("input.tailing");
 
+    private Subscriber<? super CustomLoggingEvent> subscriber = null;
+
     @Resource(name = "logTransformationContext")
     private LogTransformationContext transformationContext;
 
     public void parseInput() {
-        SubscriptionBasedPatternReceiver patternReceiver =
-                new SubscriptionBasedPatternReceiver(subscriber, transformationContext);
-        patternReceiver.setFileURL(FILE_URL);
-        patternReceiver.setTailing(TAILING);
-        patternReceiver.activateOptions();
+        setTimestampFormat(TIMESTAMP_FORMAT);
+        setLogFormat(INPUT_FORMAT);
+        setFileURL(FILE_URL);
+        setTailing(TAILING);
+        activateOptions();
+    }
+
+    @Override
+    public void doPost(LoggingEvent event) {
+        subscriber.onNext(new CustomLoggingEvent(event, transformationContext));
+    }
+
+    @Override
+    public void subscribe(Subscriber<? super CustomLoggingEvent> subscriber) {
+        this.subscriber = subscriber;
     }
 }
