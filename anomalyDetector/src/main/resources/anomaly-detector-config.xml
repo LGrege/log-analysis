@@ -15,13 +15,15 @@
 
     <bean id="logEventMonitor" class="com.lukasgregori.ml.input.util.LogEventMonitor"/>
 
-    <bean id="inputParser" class="com.lukasgregori.ml.input.parser.impl.FileInputParser"/>
+    <alias name="fileInputParser" alias="inputParser"/>
+    <bean id="fileInputParser" class="com.lukasgregori.ml.input.parser.impl.FileInputParser"/>
 
     <bean id="inputFacade" class="com.lukasgregori.ml.input.InputFacade"/>
     <!-- End Input -->
 
     <!-- Start Clustering -->
-    <bean id="distanceMeasure" class="org.apache.commons.math3.ml.distance.EuclideanDistance"/>
+    <alias name="euclideanDistance" alias="distanceMeasure"/>
+    <bean id="euclideanDistance" class="org.apache.commons.math3.ml.distance.EuclideanDistance"/>
 
     <bean id="clusterer" class="com.lukasgregori.ml.clustering.impl.sostream.SOStreamClusterer">
         <constructor-arg type="org.apache.commons.math3.ml.distance.DistanceMeasure" ref="distanceMeasure"/>
