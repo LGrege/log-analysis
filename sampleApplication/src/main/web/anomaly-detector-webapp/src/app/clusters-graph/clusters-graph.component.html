@@ -1,0 +1,27 @@
+<div class="ngx-graph-full">
+  <ngx-graph
+    layout="colaForceDirected"
+    [clusters]="clusters"
+    [links]="links"
+    [nodes]="nodes"
+    [center$]="center$"
+    [zoomToFit$]="zoomToFit$"
+    xmlns:svg="http://java.sun.com/xml/ns/j2ee">
+
+    <ng-template #linkTemplate let-link>
+      <svg:g class="edge">
+        <svg:path class="line" stroke-width="2" marker-end="url(#arrow)">
+        </svg:path>
+        <svg:text class="edge-label" text-anchor="middle">
+          <textPath class="text-path"
+                    [attr.href]="'#' + link.id"
+                    [style.dominant-baseline]="link.dominantBaseline"
+                    startOffset="50%">
+            {{link.label}}
+          </textPath>
+        </svg:text>
+      </svg:g>
+    </ng-template>
+
+  </ngx-graph>
+</div>

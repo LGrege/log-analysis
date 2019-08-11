@@ -19,7 +19,7 @@
 package com.lukasgregori.ml.input;
 
 import com.lukasgregori.ml.input.parser.InputParser;
-import com.lukasgregori.ml.input.util.LogEventMonitor;
+import com.lukasgregori.ml.input.util.AbstractLogEventMonitor;
 import io.reactivex.Flowable;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -33,7 +33,7 @@ public class InputFacade implements InitializingBean {
     private static InputFacade instance;
 
     @Resource(name = "logEventMonitor")
-    private LogEventMonitor logEventMonitor;
+    private AbstractLogEventMonitor logEventMonitor;
 
     @Resource(name = "inputParser")
     private InputParser inputParser;

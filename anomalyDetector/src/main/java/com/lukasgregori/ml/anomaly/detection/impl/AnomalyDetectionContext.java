@@ -19,13 +19,12 @@
 package com.lukasgregori.ml.anomaly.detection.impl;
 
 import com.lukasgregori.ml.anomaly.detection.AnomalyDetector;
+import com.lukasgregori.ml.anomaly.detection.util.LoggingAnomaly;
 import com.lukasgregori.ml.clustering.impl.ClusteringContext;
 import com.lukasgregori.ml.clustering.impl.sostream.SOCluster;
-import com.lukasgregori.ml.anomaly.detection.util.LoggingAnomaly;
 import com.lukasgregori.ml.input.util.CustomLoggingEvent;
 
 import javax.annotation.Resource;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class AnomalyDetectionContext {
         this.anomalyDetector = anomalyDetector;
     }
 
-    public Collection<LoggingAnomaly> findAnomalies() {
+    public List<LoggingAnomaly> findAnomalies() {
         List<SOCluster<CustomLoggingEvent>> currentClusters = clusteringContext.getAllClusters();
         List<LoggingAnomaly> anomalies = anomalyDetector.findAnomalies(currentClusters);
         Collections.sort(anomalies);

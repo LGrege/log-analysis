@@ -23,6 +23,7 @@ import org.apache.commons.math3.ml.clustering.Clusterable;
 import org.apache.commons.math3.ml.clustering.DoublePoint;
 import org.apache.log4j.spi.LoggingEvent;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.apache.commons.text.StringTokenizer;

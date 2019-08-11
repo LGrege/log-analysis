@@ -1,0 +1,9 @@
+<ngb-accordion [closeOthers]="true" (panelChange)="onClusterSelected($event)">
+  <li *ngFor="let cluster of clusters; let clusterID = index">
+    <ngb-panel id="{{clusterID}}" title="Cluster #{{clusterID}} - {{cluster.weight | number:'1.1-5'}}">
+      <ng-template ngbPanelContent>
+        <app-cluster-detail [cluster]="cluster"></app-cluster-detail>
+      </ng-template>
+    </ngb-panel>
+  </li>
+</ngb-accordion>
