@@ -1,0 +1,28 @@
+<table class="table table-striped scroll-horizontal">
+  <thead>
+  <tr>
+    <th scope="col">Level</th>
+    <th scope="col">Logger</th>
+    <th scope="col">Message</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of cluster.events">
+    <th scope="row">
+      <mat-chip-list>
+        <div *ngIf="event.level === 'INFO'">
+          <mat-chip color="primary" selected>{{event.level}}</mat-chip>
+        </div>
+        <div *ngIf="event.level === 'WARN'">
+          <mat-chip color="accent" selected>{{event.level}}</mat-chip>
+        </div>
+        <div *ngIf="event.level === 'ERROR'">
+          <mat-chip color="warn" selected>{{event.level}}</mat-chip>
+        </div>
+      </mat-chip-list>
+    </th>
+    <td>{{event.logger}}</td>
+    <td>{{event.message}}</td>
+  </tr>
+  </tbody>
+</table>

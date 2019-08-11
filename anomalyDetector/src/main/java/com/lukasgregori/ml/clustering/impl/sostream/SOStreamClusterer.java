@@ -60,7 +60,7 @@ public class SOStreamClusterer<T extends Clusterable> extends OnlineClusterer<T>
 
     private static final double CLUSTER_RADIUS_START_VALUE = 0.1f;
 
-    private ArrayList<SOCluster<T>> clusters = new ArrayList<>();
+    private List<SOCluster<T>> clusters = new ArrayList<>();
 
     private double alpha;
 
@@ -162,5 +162,10 @@ public class SOStreamClusterer<T extends Clusterable> extends OnlineClusterer<T>
     @Override
     public List<SOCluster<T>> getCurrentClusters() {
         return clusters;
+    }
+
+    @Override
+    public void setCurrentClusters(List<SOCluster<T>> clusters) {
+        this.clusters = clusters;
     }
 }

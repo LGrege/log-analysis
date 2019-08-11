@@ -42,4 +42,8 @@ public class ClusteringContext {
     public List<SOCluster<CustomLoggingEvent>> getAllClusters() {
         return clusterer.getCurrentClusters();
     }
+
+    public void setAllClusters(List<SOCluster<CustomLoggingEvent>> clusters) {
+        clusterer.setCurrentClusters(clusters);
+    }
 }

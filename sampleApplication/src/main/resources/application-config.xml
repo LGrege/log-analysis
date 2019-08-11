@@ -3,6 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="classpath:anomaly-detector-config.xml" />
+    <import resource="classpath:anomaly-detector-config.xml"/>
+
+    <!-- Log Event Monitor Persisting to Mongo-DB -->
+    <alias name="mongoDBLogEventMonitor" alias="logEventMonitor"/>
+    <bean name="mongoDBLogEventMonitor" class="com.lukasgregori.ml.mongo.MongoDBLogEventMonitor"/>
+
+    <!-- Mongo DB Helpers -->
+    <bean name="mongoDBHelper" class="com.lukasgregori.ml.mongo.util.MongoDBHelper"/>
 
 </beans>

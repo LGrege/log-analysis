@@ -19,18 +19,13 @@
 package com.lukasgregori.ml.clustering.impl.sostream;
 
 import com.lukasgregori.ml.clustering.impl.CustomCluster;
-import com.lukasgregori.ml.input.util.CustomLoggingEvent;
-import com.lukasgregori.ml.input.util.LogEventMonitor;
+import com.lukasgregori.ml.input.util.AbstractLogEventMonitor;
 import com.lukasgregori.ml.math.DoublePointUtils;
 import com.lukasgregori.ml.util.ContextProvider;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.math3.ml.clustering.Clusterable;
 import org.apache.commons.math3.ml.clustering.DoublePoint;
 import org.apache.commons.math3.ml.distance.DistanceMeasure;
 import org.apache.commons.math3.util.MathArrays;
-
-import java.util.OptionalDouble;
-import java.util.stream.Stream;
 
 /**
  * @author Lukas Gregori
@@ -62,6 +57,6 @@ public class SOCluster<T extends Clusterable> extends CustomCluster<T> {
     }
 
     public double getWeight() {
-        return (float) getPoints().size() / LogEventMonitor.getLogEventCount();
+        return (float) getPoints().size() / AbstractLogEventMonitor.getLogEventCount();
     }
 }

@@ -32,10 +32,10 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 /**
- * Subscribed to InputParser which publishes new logging events to the monitor.
+ * Abstract base implementation. Subscribed to InputParser which publishes new logging events to the monitor.
  * Calls clustering algorithm on new logging events as they arise and triggers
  * anomaly detection on fixed interval cycle.
  *
@@ -43,21 +43,22 @@ import java.util.Collection;
  * @see com.lukasgregori.ml.input.parser.InputParser
  * @see InputFacade
  */
-public class LogEventMonitor implements Subscriber<CustomLoggingEvent> {
+public abstract class AbstractLogEventMonitor implements Subscriber<CustomLoggingEvent> {
 
     private static final int ANOMALY_DETECTION_FREQUENCY = ContextProvider.getInt("anomaly.detection.frequency");
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogEventMonitor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractLogEventMonitor.class);
 
     private static final String NEW_LOGGING_EVENT = "New custom logging event: %s";
 
-    private static final String LOG_MONITOR_ERROR = "Log Monitor Error";
-
     private static final String SUBSCRIBE = "Subscribe to publisher: %s";
+
+    private static final String LOG_MONITOR_ERROR = "Log Monitor Error";
 
     private static final String COMPLETED = "Log Monitor Completed";
 
-    private static int logEventCount;
+    @Resource(name = "anomalyDetectionContext")
+    private AnomalyDetectionContext anomalyDetectionContext;
 
     @Resource(name = "logTransformationContext")
     private LogTransformationContext transformationContext;
@@ -65,8 +66,9 @@ public class LogEventMonitor implements Subscriber<CustomLoggingEvent> {
     @Resource(name = "clusteringContext")
     private ClusteringContext clusteringContext;
 
-    @Resource(name = "anomalyDetectionContext")
-    private AnomalyDetectionContext anomalyDetectionContext;
+    private static int logEventCount;
+
+    protected abstract void handleAnomalyUpdate(List<LoggingAnomaly> anomalies);
 
     @Override
     public void onSubscribe(Subscription subscription) {
@@ -87,9 +89,9 @@ public class LogEventMonitor implements Subscriber<CustomLoggingEvent> {
 
     private void updateAnomalies() {
         if (logEventCount++ % ANOMALY_DETECTION_FREQUENCY == 0) {
-            Collection<LoggingAnomaly> anomalies = anomalyDetectionContext.findAnomalies();
+            List<LoggingAnomaly> anomalies = anomalyDetectionContext.findAnomalies();
             LOGGER.error("Found Anomalies: " + CollectionUtils.size(anomalies));
-            anomalies.forEach(anomaly -> LOGGER.error(anomaly.toString()));
+            handleAnomalyUpdate(anomalies);
         }
     }
 

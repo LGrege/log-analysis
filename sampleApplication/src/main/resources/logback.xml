@@ -3,5 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <logger name="org.springframework.web" level="ERROR"/>
     <logger name="com.lukasgregori.ml.LogAnalysisApplication" level="DEBUG"/>
-    <logger name="com.lukasgregori.ml.input.util.LogEventMonitor" level="DEBUG"/>
+    <logger name="com.lukasgregori.ml.input.util.AbstractLogEventMonitor" level="DEBUG"/>
+    <logger name="com.lukasgregori.ml.mongo.util.MongoDBHelper" level="DEBUG"/>
+    <logger name="com.lukasgregori.ml.mongo.MongoDBLogEventMonitor" level="DEBUG"/>
 </configuration>
