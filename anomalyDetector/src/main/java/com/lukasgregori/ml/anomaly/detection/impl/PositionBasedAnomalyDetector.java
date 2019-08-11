@@ -19,15 +19,12 @@
 package com.lukasgregori.ml.anomaly.detection.impl;
 
 import com.lukasgregori.ml.anomaly.detection.AnomalyDetector;
-import com.lukasgregori.ml.clustering.impl.sostream.SOCluster;
 import com.lukasgregori.ml.anomaly.detection.util.LoggingAnomaly;
+import com.lukasgregori.ml.clustering.impl.sostream.SOCluster;
 import com.lukasgregori.ml.input.util.CustomLoggingEvent;
-import com.lukasgregori.ml.input.util.LogEventMonitor;
 import com.lukasgregori.ml.util.ContextProvider;
-import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;

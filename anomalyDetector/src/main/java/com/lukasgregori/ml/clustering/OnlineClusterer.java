@@ -40,4 +40,7 @@ public abstract class OnlineClusterer<T extends Clusterable> extends Clusterer<T
     public abstract List<SOCluster<T>> clusterNewFeature(T feature);
 
     public abstract List<SOCluster<T>> getCurrentClusters();
+
+    public abstract void setCurrentClusters(List<SOCluster<T>> clusters);
+
 }
