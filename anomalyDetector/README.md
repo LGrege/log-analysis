@@ -8,7 +8,7 @@ The whole framework consists of an easily extensible and highly efficient pipeli
 improvements and adaptions by third parties if needed. Below each of the components making up the core foundation 
 of the project are described in further detail.
 
-![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/overview.png?raw=true "Title")
+![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/pipelineOverview.png?raw=true "Pipeline Overview")
 
 ### 1. Input Parsing
 
@@ -20,6 +20,8 @@ Apaches Log4J utilities LogFilePatternReceiver, which parses new lines within th
 After a new logging event has been read, the next step in making it usable for the following steps is to extract a 
 numerical representation (feature vector) out of the log event. This step heavily influences the overall quality of the 
 detection algorithm as all following computations are based on the produced vector.
+
+![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/featureVector.jpg?raw=true "Feature Vector")
 
 The following two approaches are used to cooperatively create the representation:
 
