@@ -25,7 +25,7 @@ The whole framework consists of an easily extensible and highly efficient pipeli
 improvements and adaptions by third parties if needed. Below each of the components making up the core foundation 
 of the project are described in further detail.
 
-![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/overview.png?raw=true "Title")
+![Log Analysis Pipeline](https://github.com/LGrege/LogAnalysis/blob/master/documentation/images/pipelineOverview.png?raw=true "Pipeline Overview")
 
 This repository contains two independent modules listed below:
 
